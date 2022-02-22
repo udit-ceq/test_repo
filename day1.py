@@ -24,6 +24,10 @@ About today's class :
     if-else clause 
     loops
     function creation 
+    
+    
+    functions 
+    names 
     modules
     class 
     
