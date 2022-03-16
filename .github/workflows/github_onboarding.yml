@@ -1,0 +1,33 @@
+name: 'Github onboarding Workflow'
+on:
+  workflow_dispatch:
+    inputs:
+      owner:
+        description: 'owner '
+        required: true
+      repo:
+        description: 'repository name'
+        required: true
+    
+# Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+defaults:
+  run:
+    shell: bash
+  
+jobs:  
+  github-onboarding:
+    name: 'Github onboarding job'
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Run github script
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        python github_operations.py ${{ github.event.inputs.owner }} ${{ github.event.inputs.repo }}
+
+
