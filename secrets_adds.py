@@ -50,7 +50,7 @@ def add_token_to_github_secret(secret_name, secret_value):
                 'encrypted_value': encoded_value,
                 "key_id" : data['key_id']
 			}))
-    print(resp.json())
+    print(resp)
     
     
     
