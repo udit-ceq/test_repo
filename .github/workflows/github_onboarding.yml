@@ -2,11 +2,17 @@ name: 'Github onboarding Workflow'
 on:
   workflow_dispatch:
     inputs:
-      owner:
-        description: 'owner '
+      tool:
+        description: 'Platform for which you want to add secret'
         required: true
-      repo:
-        description: 'repository name'
+      team_name:
+        description: 'team name'
+        required: true
+      env:
+        description: 'Enviornment '
+        required: true
+      aws_account:
+        description: 'AWS Account'
         required: true
     
 # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
@@ -27,7 +33,11 @@ jobs:
     - name: Run github script
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        SONAR_TEAM_NAME: ${{ secrets.SONAR_TEAM_NAME }}
+        AWS_TOKEN: ${{ secrets.AWS_TOKEN }}
+        PRISMA_TOKEN: ${{ secrets.PRISMA_TOKEN }}
+        
       run: |
-        python github_operations.py ${{ github.event.inputs.owner }} ${{ github.event.inputs.repo }}
+        python secrets_adds.py ${{ github.event.inputs.tool }} ${{ github.event.inputs.team_name }} ${{ github.event.inputs.env }} ${{ github.event.inputs.aws_account }}
 
 

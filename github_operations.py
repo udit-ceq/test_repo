@@ -5,7 +5,6 @@ Created on Wed Mar 16 17:32:30 2022
 @author: 91798
 """
 import json
-
 import requests
 import os
 import sys
@@ -15,8 +14,14 @@ BASE_URL = "https://api.github.com/"
 
 token = os.environ['GH_TOKEN']
 
-owner = sys.argv[1]
-repo = sys.argv[2]
+owner = "udit-ceq"
+repo = "test_repo"
+
+
+tool = sys.argv[1]
+team_name = sys.argv[2]
+env = sys.argv[3]
+aws_account = sys.argv[4]
 
 
 def list_commits(owner, repo):
