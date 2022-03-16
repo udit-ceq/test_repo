@@ -25,7 +25,7 @@ def list_commits(owner, repo):
     return req.json()
 
 
-print(list_commits("pinkesh-ceq", "First-repo"))
+print(list_commits(owner,repo))
 
 
 def create_repo_project(owner, repo_name, project_name):
@@ -36,6 +36,6 @@ def create_repo_project(owner, repo_name, project_name):
     return req.json()
 
 
-print(create_repo_project("pinkesh-ceq", "First-repo", "project_three"))
+print(create_repo_project(owner,repo, "project_three"))
 
 
