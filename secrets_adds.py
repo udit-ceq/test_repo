@@ -64,6 +64,6 @@ def encryptSecret(public_key, secret_value):
 
 
 if (tool =="sonarqube"):
-    secrets={"_SONARQUBE_HOST": "https://sonarqube.mcd.com", "_SONARQUBE_TOKEN":SONAR_TEAM_NAME}
+    secrets={"{}_SONARQUBE_HOST": "https://sonarqube.mcd.com", "{}_SONARQUBE_TOKEN":SONAR_TEAM_NAME}
     for secret_name,secret_value in secrets.items():
         add_token_to_github_secret(secret_name.format(team_name), secret_value)
