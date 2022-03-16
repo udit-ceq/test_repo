@@ -10,7 +10,7 @@ from requests.auth import HTTPBasicAuth
 
 
 
-token = "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"
+token = os.environ['GH_TOKEN']
 owner = "udit-ceq"
 repo = "test_repo"
 
