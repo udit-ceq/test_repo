@@ -10,7 +10,7 @@ from requests.auth import HTTPBasicAuth
 
 
 
-token = "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"
+token = os.environ['GH_TOKEN']
 owner = "udit-ceq"
 repo = "test_repo"
 
@@ -50,7 +50,7 @@ def add_token_to_github_secret(secret_name, secret_value):
                 'encrypted_value': encoded_value,
                 "key_id" : data['key_id']
 			}))
-    print(resp.json())
+    print(resp)
     
     
     
