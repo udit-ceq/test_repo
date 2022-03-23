@@ -1,0 +1,35 @@
+name: 'Prisma onboarding Workflow'
+on:
+  workflow_dispatch:
+    inputs:
+      team_name:
+        description: 'team name'
+        required: true
+      orgs:
+        description: 'Github Organization'
+        required: true
+    
+# Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+defaults:
+  run:
+    shell: bash
+  
+jobs:  
+  prisma-onboarding:
+    name: 'Prisma onboarding job'
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Run prisma script
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        
+        
+      run: |
+        python prisma_onboarding_automation.py ${{ github.event.inputs.team_name }} ${{ github.event.inputs.orgs }} 
+
+
