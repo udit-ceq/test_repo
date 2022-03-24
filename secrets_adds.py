@@ -15,12 +15,14 @@ owner = "udit-ceq"
 repo = "test_repo"
 
 tool = sys.argv[1]
-team_name = sys.argv[2]
-env = sys.argv[3]
-aws_account = sys.argv[4]
+org = sys.argv[2]
+team_name = sys.argv[3]
+
+
 
 SONAR_TEAM_NAME = os.environ['SONAR_TEAM_NAME']
-AWS_TOKEN = os.environ['AWS_TOKEN']
+AWS_ACCESS_KEY = os.environ['AWS_ACCESS_KEY']
+AWS_SECRET_KEY = os.environ['AWS_SECRET_KEY']
 PRISMA_TOKEN = os.environ['PRISMA_TOKEN']
 
 
@@ -67,3 +69,10 @@ if (tool =="sonarqube"):
     secrets={"{}_SONARQUBE_HOST": "https://sonarqube.mcd.com", "{}_SONARQUBE_TOKEN":SONAR_TEAM_NAME}
     for secret_name,secret_value in secrets.items():
         add_token_to_github_secret(secret_name.format(team_name), secret_value)
+
+elif (tool =="aws"):
+    env = sys.argv[4]
+    aws_account = sys.argv[5]
+    secrets={"{}_AWS_GITHUB_{}_{}_ACCESS_KEY_ID": AWS_ACCESS_KEY, "{}_AWS_GITHUB_{}_{}_SECRET_KEY":AWS_SECRET_KEY}
+    for secret_name,secret_value in secrets.items():
+        add_token_to_github_secret(secret_name.format(team_name,aws_account,env), secret_value)

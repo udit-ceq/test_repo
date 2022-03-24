@@ -11,10 +11,13 @@ from requests.auth import HTTPBasicAuth
 
 base_url = "https://api3.prismacloud.io/"
 
+team_name = sys.argv[1]
+orgs = sys.argv[2]
+
 def prismaLogin():
-    username = "fdbe6e09-1208-494b-bb4e-4a0e94c879b9"
-    password = "OSmviYs6ncfjMuxRwX9xTckqOI0="
-    prismaId =  "806079781090668544"
+    username = os.environ['PRISMA_ACCESS_KEY']
+    password = os.environ['PRISMA_SECRET_KEY']
+    prismaId = os.environ['PRISMA_ID']
 
 
     payload = {
@@ -35,8 +38,7 @@ def prismaLogin():
 
 JWT_token = prismaLogin()
 #print(JWT_token)
-team_name = sys.argv[1]
-orgs = sys.argv[2]
+
 
 def addPrismaUserRole():
     role_names = ["{}-Prisma_Admin", 

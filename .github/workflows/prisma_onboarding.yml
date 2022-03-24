@@ -27,7 +27,9 @@ jobs:
     - name: Run prisma script
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        
+        PRISMA_ACCESS_KEY: ${{ secrets.PRISMA_ACCESS_KEY }}
+        PRISMA_SECRET_KEY: ${{ secrets.PRISMA_SECRET_KEY }}
+        PRISMA_ID: ${{ secrets.PRISMA_ID }}
         
       run: |
         python prisma_onboarding_automation.py ${{ github.event.inputs.team_name }} ${{ github.event.inputs.orgs }} 
