@@ -36,7 +36,8 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
         SONAR_TEAM_NAME: ${{ secrets.SONAR_TEAM_NAME }}
-        AWS_TOKEN: ${{ secrets.AWS_TOKEN }}
+        AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+        AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
         PRISMA_TOKEN: ${{ secrets.PRISMA_TOKEN }}
         
       run: |
