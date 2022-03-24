@@ -17,6 +17,8 @@ repo = "test_repo"
 tool = sys.argv[1]
 org = sys.argv[2]
 team_name = sys.argv[3]
+env = sys.argv[4]
+aws_account = sys.argv[5]
 
 
 
@@ -71,8 +73,6 @@ if (tool =="sonarqube"):
         add_token_to_github_secret(secret_name.format(team_name), secret_value)
 
 elif (tool =="aws"):
-    env = sys.argv[4]
-    aws_account = sys.argv[5]
     secrets={"{}_AWS_GITHUB_{}_{}_ACCESS_KEY_ID": AWS_ACCESS_KEY, "{}_AWS_GITHUB_{}_{}_SECRET_KEY":AWS_SECRET_KEY}
     for secret_name,secret_value in secrets.items():
         add_token_to_github_secret(secret_name.format(team_name,aws_account,env), secret_value)
