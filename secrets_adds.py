@@ -15,10 +15,10 @@ owner = "udit-ceq"
 repo = "test_repo"
 
 tool = sys.argv[1]
-org = sys.argv[2]
-team_name = sys.argv[3]
-env = sys.argv[4]
-aws_account = sys.argv[5]
+#org = sys.argv[2]
+team_name = sys.argv[2]
+env = sys.argv[3]
+aws_account = sys.argv[4]
 
 
 
